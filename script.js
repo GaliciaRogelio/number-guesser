@@ -13,14 +13,14 @@ const compareGuesses = (userGuess, computerGuess, targetNumber) => {
   // target number will be a random number. it hets connected to generateTarget().
   targetNumber = generateTarget();
   // Use Math.abs() to get the difference between human and target. Same for computer and target.
-  const human = Math.abs(userGuess - targetNumber);
-  const compu = Math.abs(computerGuess - targetNumber);
+  const humanVar = Math.abs(userGuess - targetNumber);
+  const compuVar = Math.abs(computerGuess - targetNumber);
 
-  if (human < compu) {
+  if (humanVar < compuVar) {
     return true;
-  } else if (compu < human) {
+  } else if (compuVar < humanVar) {
     return false;
-  } else if (compu === human) {
+  } else if (compuVar === humanVar) {
     return true;
   }
 };
@@ -28,12 +28,14 @@ const compareGuesses = (userGuess, computerGuess, targetNumber) => {
 // console.log(compareGuesses(1,3));
 
 // Increase the winner's score after each round.
-const updateScore = (winner) => {
-  let humanScore;
-  let computerScore;
+const updateScore = winner => {
   if (winner === "human") {
-    humanScore + 1;
+    humanScore ++;
   } else if (winner === "computer") {
-    computerScore + 1;
+    computerScore ++;
   }
 };
+
+const advanceRound = () => {
+   currentRoundNumber ++;
+}
